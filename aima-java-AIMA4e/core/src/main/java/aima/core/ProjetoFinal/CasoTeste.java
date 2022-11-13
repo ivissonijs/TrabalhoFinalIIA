@@ -33,7 +33,8 @@ public class CasoTeste {
 		horario[2][0].setMateria(0,  "VETORES E GEOMETRIA ANÁLITICA" );
 		horario[3][0].setMateria(0,  "PROGRAMAÇÃO FUNCIONAL" );
 		horario[4][0].setMateria(0,  "INTRODUÇÃO A ADMINISTRAÇÃO" );
-		horario[5][0].setMateria(0,  "TRABALHO" );
+
+		/*horario[5][0].setMateria(0,  "TRABALHO" );
 		horario[6][0].setMateria(0,  "TRABALHO" );
 		horario[0][2].setMateria(0,  "TRABALHO" );
 		horario[1][2].setMateria(0,  "TRABALHO" );
@@ -100,7 +101,7 @@ public class CasoTeste {
 		horario[8][0].setHoras(0);
 		horario[9][0].setHoras(0);
 		horario[8][2].setHoras(0);
-		horario[9][2].setHoras(0);
+		horario[9][2].setHoras(0);*/
 	}
 	
 	
@@ -120,17 +121,17 @@ public class CasoTeste {
 	{
 	    String es = new String();
 	    ArrayList<String> dia_semana = new ArrayList<String>();
-	    es += Cores.ANSI_BLACK + "     [ Segunda][  Terca ][ Quarta ][ Quinta ][ Sexta  ][ Sabado ]\n" + Cores.ANSI_RESET;
-	    dia_semana.add(Cores.ANSI_BLACK + "13:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "14:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "15:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "16:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "17:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "18:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "19:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "20:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "21:00" + Cores.ANSI_RESET);
-	    dia_semana.add(Cores.ANSI_BLACK + "22:00" + Cores.ANSI_RESET);
+	    es += "     [ Segunda][  Terca ][ Quarta ][ Quinta ][ Sexta  ][ Sabado ]\n" ;
+	    dia_semana.add( "13:00" );
+	    dia_semana.add( "14:00" );
+	    dia_semana.add( "15:00" );
+	    dia_semana.add( "16:00" );
+	    dia_semana.add( "17:00" );
+	    dia_semana.add( "18:00" );
+	    dia_semana.add( "19:00" );
+	    dia_semana.add( "20:00" );
+	    dia_semana.add( "21:00" );
+	    dia_semana.add( "22:00" );
 	    
 	    for(int i = 0; i < 10; i++)
 	        {
@@ -139,7 +140,7 @@ public class CasoTeste {
 	                {
 	                    es += "[";
 	                    if (horario[i][j].getMateria() == null){
-	                    	es += Cores.ANSI_BLACK + "--------" + Cores.ANSI_RESET;
+	                    	es +=  "--------";
 	                    }else {
 	                    	es += horario[i][j].MateriaToString();
 	                    }

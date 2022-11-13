@@ -36,6 +36,8 @@ public interface Constraint {
 	 */
 	List<String> getScope();
 
+	//List<Object> getScope2();
+
 	/**
 	 * 
 	 * @return the relation that defines the values the the scope of the
