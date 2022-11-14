@@ -13,13 +13,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" +
-                "nome='" + nome + '\'' +
-                ", preRequisito=" + Arrays.toString(preRequisito) +
-                ", cargaHoraria=" + cargaHoraria +
-                ", periodoOfertado=" + periodoOfertado +
-                ", periodoRealizado=" + periodoRealizado +
-                '}';
+        return nome ;
     }
 
     private  String nome;
