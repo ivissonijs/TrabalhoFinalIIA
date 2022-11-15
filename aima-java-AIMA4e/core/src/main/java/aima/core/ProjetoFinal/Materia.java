@@ -11,6 +11,12 @@ public class Materia {
         this.periodoOfertado = periodoOfertado;
     }
 
+    public Materia(String nome, int cargaHoraria, int periodoOfertado) {
+        this.nome = nome;
+        this.cargaHoraria = cargaHoraria;
+        this.periodoOfertado = periodoOfertado;
+    }
+
     @Override
     public String toString() {
         return nome ;
@@ -29,6 +35,8 @@ public class Materia {
     public Materia[] getPreRequisito() {
         return preRequisito;
     }
+
+
 
     public void setPreRequisito(Materia[] preRequisito) {
         this.preRequisito = preRequisito;
