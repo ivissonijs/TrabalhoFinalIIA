@@ -1,15 +1,16 @@
 package aima.core.ProjetoFinal;
 
+import aima.core.logic.basic.firstorder.domain.DomainFactory;
 import aima.core.search.api.Assignment;
 import aima.core.search.api.CSP;
 import aima.core.search.api.Constraint;
+import aima.core.search.api.Domain;
 import aima.core.search.basic.csp.AC3;
 import aima.core.search.basic.csp.BacktrackingSearch;
 import aima.core.search.basic.support.BasicCSP;
 import aima.core.search.basic.support.BasicConstraint;
-import javafx.geometry.Pos;
+//import javafx.geometry.Pos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Principal{
@@ -97,23 +98,10 @@ public class Principal{
                 materia39,materia40,materia41,materia42,materia43,
                 materia44};
 
-
-      /*  Object[] posicoes = new Object[]{
-                posicao1, posicao2, posicao3, posicao4, posicao5, posicao6, posicao7, posicao8, posicao9, posicao10,
-                posicao11, posicao12, posicao13, posicao14, posicao15, posicao16, posicao17, posicao18, posicao19, posicao20,
-                posicao21, posicao22, posicao23, posicao24, posicao25, posicao26, posicao27, posicao28, posicao29, posicao30,
-                posicao31, posicao32, posicao33, posicao34, posicao35, posicao36, posicao37, posicao38, posicao39, posicao40,
-                posicao41, posicao42, posicao43, posicao44, posicao45, posicao46, posicao47, posicao48, posicao49, posicao50,
-                posicao61, posicao62, posicao63, posicao64, posicao65, posicao66, posicao67, posicao68, posicao69, posicao70,
-                posicao81, posicao82, posicao83, posicao84, posicao85, posicao86, posicao87, posicao88, posicao89, posicao90,
-                posicao91, posicao92, posica093, posicao94, posicao95, posicao96, posicao97, posicao98, posicao99, posicao100
-                };
-*/
-
         Object[] dominioMaterias = new Object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9,
                 10,11,12,13,14,15,16,17,18, 19,20,21,22,23,24,25,26,27,
                 28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44
-                 };
+        };
 
 
         Object[][] domain = new Object[][] { dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias,
@@ -129,66 +117,70 @@ public class Principal{
 
 
 
-        //Constraint constraints = new BasicConstraint( new String[] { materia1.getNome(),  materia2.getNome()}, values -> (( values[0]  ==  values[1])));
+        Constraint constraints1;
 
-        Constraint[] constraints1 = {,
-                    };
+        Constraint[] constraints = new  Constraint[1901]; //Tamanho de restrições
 
-        Constraint[] constraints = new  Constraint[52]; //Tamanho de restrições                                                                        // [1,2,3,4,5,...]  +  [1,2,3,4,5...]
-                                                                                                                   //   == [0,1,2,3,4,5]
         //Restrição 1 - Primeiras 5 materias sendo obrigatória do 1° periodo
+
         constraints[0] = new BasicConstraint(new String[]{materia1.getNome(),  materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
         constraints[1] = new BasicConstraint(new String[]{materia2.getNome(), materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
         constraints[2] = new BasicConstraint(new String[]{materia3.getNome(), materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
         constraints[3] = new BasicConstraint(new String[]{materia4.getNome(),  materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
+
         //Restrição 2 - Garante que a matéria com pré requisito seja pego somente depois de pegar o pré requisito
+
         int aux1 = 4;
         for(Materia materia : variaveis2){
             if(materia.getPreRequisito() != null){
                 for(Materia preReq : materia.getPreRequisito()){
-                 //   System.out.println(materia.getNome() +" "+ preReq.getNome());
-                constraints[aux1] = new BasicConstraint(new String[] { materia.getNome(), preReq.getNome() },
-                        values -> (((Integer) values[0] > (Integer) values[1])));
-                aux1 ++;
+                    //   System.out.println(materia.getNome() +" "+ preReq.getNome());
+                    constraints[aux1] = new BasicConstraint(new String[] { materia.getNome(), preReq.getNome() },
+                            values -> (((Integer) values[0] > (Integer) values[1])));
+                    aux1 ++;
                 }
             }
         }
-        //Restrição 3
-       /* int aux2 = 53;
-        for(Materia materia : variaveis2){
-            if(materia.getPreRequisito() != null){
-                for(Materia preReq : materia.getPreRequisito()){
-                    //   System.out.println(materia.getNome() +" "+ preReq.getNome());
-                    constraints[aux2] = new BasicConstraint(new String[] { materia.getNome(), preReq.getNome() },
-                            values -> (((Integer) values[0] > (Integer) values[1])));
-                    aux2 ++;
+
+        //Restrição 3 - Tentativa de criar um newEqualConstraint para restringir que variaveis nao recebam valores de dominios iguais
+        // ______________________________________________________________________________________________________________________________
+        int contador = 0;
+        for (int i = 0; i < 44; i++){
+            for(int j = 1; j < 44; j++) {
+                if(i != j) {
+                    //System.out.println("Valor de i" + i + "Valor de j" + j);
+                    //contador++;
+                    //System.out.println(contador);
+                    constraints[aux1] = new BasicConstraint(new String[]{variaveis2[i].getNome(),  variaveis2[j].getNome()}, values -> (!
+                            (
+                                    (Integer) values[0]
+                            ).equals(
+                                    (
+                                            (Integer) values[1]
+                                    )
+                            )));
+                    aux1++;
                 }
             }
-        }*/
 
-     /*   Constraint[] constraints2 = {new BasicConstraint(new String[]{ materia1.getNome(),  materia5.getNome()}, values -> (((Integer) values[0] < (Integer) values[1]))),
-                new BasicConstraint(new String[]{variaveis[1], variaveis[4]}, values -> (((Integer) values[0]  <= (Integer) values[1]))),
-                new BasicConstraint(new String[]{variaveis[2], variaveis[4]}, values -> (((Integer) values[0]  <= (Integer) values[1]))),
-                new BasicConstraint(new String[]{variaveis[3],  variaveis[4]}, values -> (((Integer) values[0] <= (Integer) values[1]))),
-                new BasicConstraint(new String[]{variaveis[4], variaveis[4]}, values -> (((Integer) values[0]  <= (Integer) values[1]))),
-        };*/
+        }
+        //_________________________________________________________________________________________________________________________________________________
 
 
 
-                /*   Constraint constraints2 = new BasicConstraint( new String[] {  variaveis[0],  variaveis[1],  variaveis[2],
-                             variaveis[3],  variaveis[4]}, values -> (( (String) values[0]  == (String) variaveis[0])
-                                                                     && (String) values[1]  == (String) variaveis[1])
-                                                                     && (String) values[2]  == (String) variaveis[2])
-                                                                     && (String) values[2]  == (String) variaveis[2])
-                                                                     && (String) values[2]  == (String) variaveis[2])
-                   );*/
+        //Restrição 4 - Tentativa de criar uma restricao que use o periodo ofertado como base
+
+
+
+
+
 
 
 
         CSP csp3 = new BasicCSP( variaveis1, domain , constraints);
 
 
-       // BacktrackingSearch bs = new BacktrackingSearch();
+        // BacktrackingSearch bs = new BacktrackingSearch();
         //Assignment asn = bs.apply(csp3);
         //System.out.println(asn.getAssignments());
 
@@ -202,10 +194,63 @@ public class Principal{
 */
 
 
+        //BacktrackingSearch backtracking = new BacktrackingSearch();
+        //backtracking.apply(csp3);
+
+        BacktrackingSearch bs = new BacktrackingSearch();
+        Assignment asn = bs.apply(csp3);
+        //passa todas as variaveis e dominios
+        System.out.println(asn.getAssignments());
+
+        //passa o dominio de uma variavel em especifico
+        // System.out.println(asn.getAssignments().get("QualidadedeSoftware"));
+
+        Object [] dominios_reduzidos = new Object[44];
+
+        for(Materia materia : variaveis2){
+            materia.setPosicao_grade((int) asn.getAssignments().get(materia.getNome()));
+        }
+
+        for(Materia materia : variaveis2){
+            System.out.println(" Materia: " + materia.getNome() + " Posicao na Grade: " + materia.getPosicao_grade());
+        }
+
+        String [][] matrizPeriodo = new String[10][8];
+        int contLinha = 0;
+        int contColuna = 0;
+        int contHoras = 0;
+        for(int i = 0; i < variaveis2.length; i++) {
+            if (contColuna >= matrizPeriodo[0].length) {
+                if(contLinha >= matrizPeriodo.length) break;
+                else {
+                    contLinha++;
+                    contColuna = 0;
+                }
+            }
+            if((contHoras + variaveis2[i].getCargaHoraria() <= 480) && ( contLinha >= variaveis2[i].getPeriodoOfertado())) {
+                matrizPeriodo[contLinha][contColuna] = variaveis2[i].getNome();
+                contColuna++;
+                contHoras += variaveis2[i].getCargaHoraria();
+            }
+            else {
+                contLinha++;
+                contColuna = 0;
+            }
+        }
+
+        for (int i =0; i < 10; i++){
+            for (int j = 0; j< 8; j++){
+                System.out.println(matrizPeriodo[i][j] + "\t");
+
+            }
+            System.out.println();
+        }
 
 
 
-        AC3 ac3 = new AC3();
+
+
+        /*AC3 ac3 = new AC3();
         ac3.test(csp3);
 
         System.out.println("\n============================================================================================================================================================================================================================================");
@@ -216,9 +261,19 @@ public class Principal{
         System.out.println( "Dominio   : " + csp3.getDomains() );
         System.out.println( "CSP       : " + csp3 );
 
+
+
+        //funcao que passa os dominios para uma lista
+
+        */
+
+
     }
 
 }
+
+
+
 
 
 
