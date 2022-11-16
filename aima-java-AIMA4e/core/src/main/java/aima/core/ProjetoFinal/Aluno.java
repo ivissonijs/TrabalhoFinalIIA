@@ -23,15 +23,6 @@ public class Aluno {
             this.horas = horas;
         }
 
-        // Construtor da variante da prioridade de trabalho
-        /*public Aluno(String nome, Double horas, ArrayList<String> funcionariosPrioritarios) {
-            super();
-            this.nome = nome;
-            this.horas = horas;
-            this.funcionariosPrioritarios = funcionariosPrioritarios;
-        }*/
-
-
         //Métodos Públicos
         public String getNome() {
             return nome;
@@ -49,13 +40,7 @@ public class Aluno {
             this.horas = horas;
         }
 
-       /* public ArrayList<String> getFuncionariosPrioritarios() {
-            return funcionariosPrioritarios;
-        }
 
-        public void setFuncionariosPrioritarios(ArrayList<String> funcionariosPrioritarios) {
-            this.funcionariosPrioritarios = funcionariosPrioritarios;
-        }*/
 
         @Override
         public String toString() {
