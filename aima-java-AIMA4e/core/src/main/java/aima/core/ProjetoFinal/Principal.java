@@ -11,70 +11,71 @@ import aima.core.search.basic.support.BasicCSP;
 import aima.core.search.basic.support.BasicConstraint;
 //import javafx.geometry.Pos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Principal{
     public static void main(String[] args) {
 
 //1° periodo
-        Materia materia1 = new Materia("SemináriosdeProgramação", 30, 1);
-        Materia materia2= new Materia("CálculaA",  60, 1);
-        Materia materia3 = new Materia("Vetores",  60, 1);
-        Materia materia4 = new Materia("ProgramaçãoFuncional",  60, 1);
-        Materia materia5 = new Materia("Intr. ADM", 60, 1);
+        Materia materia1 = new Materia("COMP0480", 30, 1);
+        Materia materia2= new Materia("MAT0151",  60, 1);
+        Materia materia3 = new Materia("MAT0150",  60, 1);
+        Materia materia4 = new Materia("COMP0393",  60, 1);
+        Materia materia5 = new Materia("ADM0219", 60, 1);
 //2° periodo
-        Materia materia6 = new Materia("CalB", new Materia[]{materia2, materia3}, 60, 2);
-        Materia materia7 = new Materia("FundamentosMat",  60, 2);
-        Materia materia8 = new Materia("OMSAdm", new Materia[]{materia5}, 60, 2);
-        Materia materia9 = new Materia("ProgramaçãoImperativa",  60, 2);
-        Materia materia10 = new Materia("InformaticaEticaSoc",  60, 2);
+        Materia materia6 = new Materia("MAT0152", new Materia[]{materia2, materia3}, 60, 2);
+        Materia materia7 = new Materia("MAT0057",  60, 2);
+        Materia materia8 = new Materia("ADM0221", new Materia[]{materia5}, 60, 2);
+        Materia materia9 = new Materia("COMP0334",  60, 2);
+        Materia materia10 = new Materia("COMP0478",  60, 2);
 //3° periodo
-        Materia materia11 = new Materia("ArquiteturaDeComputadores", new Materia[]{materia9}, 60, 3);
-        Materia materia12 = new Materia("LogicaComputacao", new Materia[]{materia7}, 60, 3);
-        Materia materia13 = new Materia("EstruturadeDados", new Materia[]{materia6, materia4}, 60, 3);
-        Materia materia14 = new Materia("EstatisticaAplicada",  60, 3);
-        Materia materia15 = new Materia("POO", new Materia[]{materia9}, 60, 3);
+        Materia materia11 = new Materia("COMP0415", new Materia[]{materia9}, 60, 3);
+        Materia materia12 = new Materia("COMP0410", new Materia[]{materia7}, 60, 3);
+        Materia materia13 = new Materia("COMP0406", new Materia[]{materia6, materia4}, 60, 3);
+        Materia materia14 = new Materia("ESTAT0011",  60, 3);
+        Materia materia15 = new Materia("COMP0395", new Materia[]{materia9}, 60, 3);
 //4° periodo
-        Materia materia16 = new Materia("MetodoseTecnicasPesquisa", new Materia[]{materia1}, 30, 4);
-        Materia materia17 = new Materia("SO", new Materia[]{materia11}, 60, 4);
-        Materia materia18 = new Materia("PAA", new Materia[]{materia7, materia13}, 60, 4);
-        Materia materia19 = new Materia("Grafos", new Materia[]{materia13, materia12}, 60, 4);
-        Materia materia20 = new Materia("SociologiaOrganização", new Materia[]{materia5}, 60, 4);
+        Materia materia16 = new Materia("COMP0481", new Materia[]{materia1}, 30, 4);
+        Materia materia17 = new Materia("COMP0472", new Materia[]{materia11}, 60, 4);
+        Materia materia18 = new Materia("COMP0397", new Materia[]{materia7, materia13}, 60, 4);
+        Materia materia19 = new Materia("COMP0408", new Materia[]{materia13, materia12}, 60, 4);
+        Materia materia20 = new Materia("ADM0177", new Materia[]{materia5}, 60, 4);
 //5°
-        Materia materia21 = new Materia("Redes", new Materia[]{materia11}, 60, 5);
-        Materia materia22 = new Materia("LFC", new Materia[]{materia12, materia4}, 60, 5);
-        Materia materia23 = new Materia("BancodeDados1", new Materia[]{materia13}, 60, 5);
-        Materia materia24 = new Materia("TGS", new Materia[]{materia8}, 60, 5);
-        Materia materia25 = new Materia("EngSoft1", new Materia[]{materia15}, 60, 5);
+        Materia materia21 = new Materia("COMP0461", new Materia[]{materia11}, 60, 5);
+        Materia materia22 = new Materia("COMP0409", new Materia[]{materia12, materia4}, 60, 5);
+        Materia materia23 = new Materia("COMP0455", new Materia[]{materia13}, 60, 5);
+        Materia materia24 = new Materia("COMP0453", new Materia[]{materia8}, 60, 5);
+        Materia materia25 = new Materia("COMP0438", new Materia[]{materia15}, 60, 5);
 //6°
-        Materia materia26 = new Materia("LabRedes", new Materia[]{materia21}, 30, 6);
-        Materia materia27 = new Materia("SistemasDistribuidos", new Materia[]{materia21, materia17, materia15}, 4, 6);
-        Materia materia28 = new Materia("SAD", new Materia[]{materia23, materia25}, 60, 6);
-        Materia materia29 = new Materia("IA", new Materia[]{materia19, materia14}, 60, 6);
-        Materia materia30 = new Materia("EngSoft2", new Materia[]{materia25}, 60, 6);
+        Materia materia26 = new Materia("COMP0463", new Materia[]{materia21}, 30, 6);
+        Materia materia27 = new Materia("COMP0470", new Materia[]{materia21, materia17, materia15}, 4, 6);
+        Materia materia28 = new Materia("COMP0451", new Materia[]{materia23, materia25}, 60, 6);
+        Materia materia29 = new Materia("COMP0427", new Materia[]{materia19, materia14}, 60, 6);
+        Materia materia30 = new Materia("COMP0439", new Materia[]{materia25}, 60, 6);
 //7°
-        Materia materia31 = new Materia("EmpreendorismoeGestão", new Materia[]{materia8}, 60, 7);
-        Materia materia32 = new Materia("GestãodeSI", new Materia[]{materia24}, 60, 7);
-        Materia materia33 = new Materia("TestedeSoftware", new Materia[]{materia30}, 60, 7);
+        Materia materia31 = new Materia("ADM0193", new Materia[]{materia8}, 60, 7);
+        Materia materia32 = new Materia("ADM0193", new Materia[]{materia24}, 60, 7);
+        Materia materia33 = new Materia("COMP0444", new Materia[]{materia30}, 60, 7);
 //8°
-        Materia materia34 = new Materia("GerenciadeProjetos", new Materia[]{materia23}, 60, 8);
-        Materia materia35 = new Materia("QualidadedeSoftware", new Materia[]{materia30}, 60, 8);
-        Materia materia36 = new Materia("EvoluçãodeSoftware", new Materia[]{materia30}, 60, 8);
+        Materia materia34 = new Materia("COMP0442", new Materia[]{materia23}, 60, 8);
+        Materia materia35 = new Materia("COMP0284", new Materia[]{materia30}, 60, 8);
+        Materia materia36 = new Materia("COMP0441", new Materia[]{materia30}, 60, 8);
 //9°
-        Materia materia37 = new Materia("Pratica1", new Materia[]{materia21, materia23, materia25}, 180, 9);
-        Materia materia38 = new Materia("TCC1", new Materia[]{materia23, materia16, materia21, materia25}, 60, 9);
+        Materia materia37 = new Materia("COMP0483", new Materia[]{materia21, materia23, materia25}, 180, 9);
+        Materia materia38 = new Materia("COMP0485", new Materia[]{materia23, materia16, materia21, materia25}, 60, 9);
 
         //10°
         Materia materia39 = new Materia("Estagio", new Materia[]{materia23, materia21, materia25}, 210, 10);
-        Materia materia40 = new Materia("TCC2", new Materia[]{materia38}, 120, 10);
-        Materia materia41 = new Materia("Pratica2", new Materia[]{materia37}, 60, 10);
+        Materia materia40 = new Materia("COMP0486", new Materia[]{materia38}, 120, 10);
+        Materia materia41 = new Materia("COMP0484", new Materia[]{materia37}, 60, 10);
 //PIBIT, PIBIC e Atividades Complementares
-        Materia materia42 = new Materia("PIBIC",  960, 0);
-        Materia materia43 = new Materia("PIBIT",  960, 0);
+        Materia materia42 = new Materia("PIBIC",  120, 0);
+        Materia materia43 = new Materia("PIBIT",  120, 0);
         Materia materia44 = new Materia("AtividadesExtras", new Materia[]{}, 120, 0);
 
 
-        //Dominios: todas matérias do segundo periodo em diante
+        //Array com as variaveis do CSP
 
         String[] variaveis1= new String[]{
                 materia1.getNome(),materia2.getNome(),materia3.getNome(),materia4.getNome(),materia5.getNome(),materia6.getNome(),
@@ -87,6 +88,7 @@ public class Principal{
                 materia39.getNome(),materia40.getNome(),materia41.getNome(),materia42.getNome(),materia43.getNome(),
                 materia44.getNome()};
 
+        //Array de materias oferecidas no curso de SI
         Materia[] variaveis2= new Materia[]{
                 materia1,materia2,materia3,materia4,materia5,materia6,
                 materia7,materia8,materia9,materia10,materia11,materia12,
@@ -98,12 +100,13 @@ public class Principal{
                 materia39,materia40,materia41,materia42,materia43,
                 materia44};
 
+
+        //Numero Max de periodos que um aluno pode ter antes de ser jubilado
         Object[] dominioMaterias = new Object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9,
-                10,11,12,13,14,15,16,17,18, 19,20,21,22,23,24,25,26,27,
-                28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44
+                10,11,12,13,14,15
         };
 
-
+        //Matriz que armazena os arrays com os dominios
         Object[][] domain = new Object[][] { dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias,
                 dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias,
                 dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias, dominioMaterias,
@@ -116,21 +119,35 @@ public class Principal{
         };
 
 
+        //Constraint constraints1;
 
-        Constraint constraints1;
+        Constraint[] constraints = new  Constraint[134]; // Array que armazena as restricoes
 
-        Constraint[] constraints = new  Constraint[1901]; //Tamanho de restrições
+        //Restrição 1 - Primeiras 5 materias sendo obrigatórias do 1° periodo
+        //values[0](valores do dominio da variavel de posicao 0 no parametro) recebe Integer, pois seus dominios sao do tipo inteiros
 
-        //Restrição 1 - Primeiras 5 materias sendo obrigatória do 1° periodo
+        constraints[0] = new BasicConstraint(new String[]{materia1.getNome()}, values -> (((Integer) values[0])) == 1);
+        constraints[1] = new BasicConstraint(new String[]{materia2.getNome()}, values -> (((Integer) values[0])) == 1);
+        constraints[2] = new BasicConstraint(new String[]{materia3.getNome()}, values -> (((Integer) values[0])) == 1);
+        constraints[3] = new BasicConstraint(new String[]{materia4.getNome()}, values -> (((Integer) values[0])) == 1);
+        constraints[4] = new BasicConstraint(new String[]{materia5.getNome()}, values -> (((Integer) values[0])) == 1);
 
-        constraints[0] = new BasicConstraint(new String[]{materia1.getNome(),  materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
-        constraints[1] = new BasicConstraint(new String[]{materia2.getNome(), materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
-        constraints[2] = new BasicConstraint(new String[]{materia3.getNome(), materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
-        constraints[3] = new BasicConstraint(new String[]{materia4.getNome(),  materia5.getNome()}, values -> (((Integer) values[0] + (Integer) values[1])) <= 6);
+        //Restricao que impede Estagio, Pibic e Pibit sejam pegos no mesmo periodo.
+        constraints[5] = new BasicConstraint(new String[]{"PIBIC", "PIBIT", "Estagio"}, values -> (!((Integer) values[0]).equals(((Integer)
+                values[1]))) && !((Integer) values[2]).equals(((Integer) values[1])) && !((Integer) values[0]).equals(((Integer) values[2])));
 
-        //Restrição 2 - Garante que a matéria com pré requisito seja pego somente depois de pegar o pré requisito
 
-        int aux1 = 4;
+        //Restrição 2 - Restricao que impede que outras materias caiam no primeiro periodo, alem das 5 primeiras já impostas pelo curso
+        int aux1 = 6;
+        int contador =1;
+        for(Materia materia : variaveis2){
+            if(materia.getPeriodoOfertado() != 1){
+                constraints[aux1] = new BasicConstraint(new String[]{materia.getNome()}, values -> (((Integer) values[0])) != 1);
+               aux1++;
+            }
+        }
+        //Restrição 3 - Garante que a matéria com pré requisito seja pega somente depois de seu pre requisito ja ter sido concluido
+
         for(Materia materia : variaveis2){
             if(materia.getPreRequisito() != null){
                 for(Materia preReq : materia.getPreRequisito()){
@@ -142,9 +159,389 @@ public class Principal{
             }
         }
 
-        //Restrição 3 - Tentativa de criar um newEqualConstraint para restringir que variaveis nao recebam valores de dominios iguais
+        //Restricao 4 - Garante que uma materia nao seja pega em um periodo em que nao é ofertada
+
+        for(Materia materia : variaveis2){
+            if(materia.getPeriodoOfertado() != 0){
+                constraints[aux1] = new BasicConstraint(new String[]{materia.getNome()}, values -> (((Integer) values[0])) >= materia.getPeriodoOfertado());
+                //System.out.println(contador++);
+                aux1 ++;
+            }
+        }
+
+
+        //Criacao da CSP
+
+        CSP csp3 = new BasicCSP( variaveis1, domain , constraints);
+
+        // Uso do Algoritmo BackTrackingSearch
+        BacktrackingSearch bs = new BacktrackingSearch();
+        Assignment asn = bs.apply(csp3);
+        //passando todas as variaveis e dominios
+        //System.out.println(asn.getAssignments());
+
+
+        //passando as atribuicoes de dominios restringidos da materia, para suas posicoes na grade
+        for(Materia materia : variaveis2){
+            materia.setPosicao_grade((int) asn.getAssignments().get(materia.getNome()));
+            //System.out.println("Nome da Materia:" + materia.getNome() + " Posicao na grade :" + materia.getPosicao_grade());
+        }
+
+        String [][] nomeMateria = new String[8][15];
+        int [] chPeriodos = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        int [] qtMaterias = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        //vetor que vai armazenar as horas totais de cada periodo
+
+        //funcao que vai calcular as horas totais de tais periodos
+        for(Materia materia : variaveis2){
+
+            switch (materia.getPosicao_grade()){
+                case 1:
+
+                    chPeriodos[0] = chPeriodos[0] + materia.getCargaHoraria();
+                    qtMaterias[0]++;
+                    break;
+
+                case 2:
+
+                    chPeriodos[1] = chPeriodos[1] + materia.getCargaHoraria();
+                    qtMaterias[1]++;
+                    break;
+
+                case 3:
+
+                    chPeriodos[2] = chPeriodos[2] + materia.getCargaHoraria();
+                    qtMaterias[2]++;
+                    break;
+
+                case 4:
+
+                    chPeriodos[3] = chPeriodos[3] + materia.getCargaHoraria();
+                    qtMaterias[3]++;
+                    break;
+
+                case 5:
+
+                    chPeriodos[4] = chPeriodos[4] + materia.getCargaHoraria();
+                    qtMaterias[4]++;
+                    break;
+
+                case 6:
+
+                    chPeriodos[5] = chPeriodos[5] + materia.getCargaHoraria();
+                    qtMaterias[5]++;
+
+                    break;
+
+                case 7:
+                    chPeriodos[6] = chPeriodos[6] + materia.getCargaHoraria();
+                    qtMaterias[6]++;
+                    break;
+
+                case 8:
+                    chPeriodos[7] = chPeriodos[7] + materia.getCargaHoraria();
+                    qtMaterias[7]++;
+                    break;
+
+                case 9:
+                    chPeriodos[8] = chPeriodos[8] + materia.getCargaHoraria();
+                    qtMaterias[8]++;
+                    break;
+
+                case 10:
+                    chPeriodos[9] = chPeriodos[9] + materia.getCargaHoraria();
+                    qtMaterias[9]++;
+                    break;
+
+                case 11:
+                    chPeriodos[10] = chPeriodos[10] + materia.getCargaHoraria();
+                    qtMaterias[10]++;
+                    break;
+
+                case 12:
+                    chPeriodos[11] = chPeriodos[11] + materia.getCargaHoraria();
+                    qtMaterias[11]++;
+                    break;
+
+                case 13:
+                    chPeriodos[12] = chPeriodos[12] + materia.getCargaHoraria();
+                    qtMaterias[12]++;
+                    break;
+
+                case 14:
+                    chPeriodos[13] = chPeriodos[13] + materia.getCargaHoraria();
+                    qtMaterias[13]++;
+                    break;
+
+                case 15:
+                    chPeriodos[14] = chPeriodos[14] + materia.getCargaHoraria();
+                    qtMaterias[14]++;
+                    break;
+
+
+            }
+
+
+        }
+
+        //funcao de impressao das horas de todos periodos
+        //--------------------------------------------------------------------------
+
+        /*for(int i =0; i < chPeriodos.length; i++){
+            System.out.println("CH Periodo " + (i + 1) + " = " + chPeriodos[i] + " horas" );
+            System.out.println("Quantidade de materias = " + qtMaterias[i]);
+            System.out.println();
+
+
+        }*/
+
+        //funcao para pegar a quantidade de periodos que o aluno cursou
+        int quantidade_periodos = 0;
+        for(int i =0; i < chPeriodos.length; i++){
+
+            if(chPeriodos[i] != 0){
+                quantidade_periodos++;
+            }
+
+        }
+
+        //imprimir quantidade de periodos
+        //System.out.println("Quantidade de periodos cursados: " + quantidade_periodos);
+
+
+        /*RESTRICAO 5 - Garante que um conjunto de materias, nao ultrapasse a carga horaria disponivel do discente.
+        somatorio de horas das materias de mesmo periodo, DEVE SER MENOR ou igual do que a carga horaria disponivel por periodo do discente */
+
+
+
+        //Impressao das materias em seus periodos correspondentes:
+
+        System.out.println("***************************************************** GRADE DO ALUNO *****************************************************");
+        int saidaLength = 0;
+        String espacoEmbranco = "";
+        System.out.print("* PRIMEIRO PERIODO: ");
+        saidaLength += "* PRIMEIRO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 1){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* SEGUNDO PERIODO:  ");
+        saidaLength +="* SEGUNDO PERIODO:  ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 2){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* TERCEIRO PERIODO: ");
+        saidaLength +="* TERCEIRO PERIODO: ".length();
+
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 3){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* QUARTO PERIODO: ");
+        saidaLength +="* QUARTO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 4){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* QUINTO PERIODO: ");
+        saidaLength +="* QUINTO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 5){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* SEXTO PERIODO: ");
+        saidaLength +="* SEXTO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 2){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* SETIMO PERIODO: ");
+        saidaLength +="* SETIMO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 7){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* OITAVO PERIODO: ");
+        saidaLength +="* OITAVO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 8){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* NONO PERIODO: ");
+        saidaLength +="* NONO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 9){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+
+        System.out.print("* DECIMO PERIODO: ");
+        saidaLength +="* DECIMO PERIODO: ".length();
+        for(Materia materia : variaveis2){
+            if(materia.getPosicao_grade() == 10){
+                System.out.print(materia.getNome() + " | ");
+                saidaLength += materia.getNome().length()+3;
+            }
+        }
+        for(int i =0; i<=(120-saidaLength);i++){
+            espacoEmbranco += " ";
+            if(i == (120-saidaLength)){
+                espacoEmbranco += "*";
+            }
+        }
+        System.out.println(espacoEmbranco);
+        saidaLength=0;
+        espacoEmbranco = "";
+        for(int i =0; i<=121;i++){
+            espacoEmbranco += "*";
+        }
+        System.out.println(espacoEmbranco);
+    }
+
+
+
+
+
+
+
+
+
+
+
+        //System.out.println("Quantidade de horas do periodo 1" + somatorio[0]);
+
+        //passando todos periodos das materias para um array
+
+
+        //vetor que armazena quantidade da soma de horas das materias de cada periodo
+
+
+
+
+
+
+
+
+
+
+        //periodo 1
+
+
+
+
+
+
+
         // ______________________________________________________________________________________________________________________________
-        int contador = 0;
+        /*int contador = 0;
         for (int i = 0; i < 44; i++){
             for(int j = 1; j < 44; j++) {
                 if(i != j) {
@@ -163,7 +560,7 @@ public class Principal{
                 }
             }
 
-        }
+        }*/
         //_________________________________________________________________________________________________________________________________________________
 
 
@@ -177,7 +574,7 @@ public class Principal{
 
 
 
-        CSP csp3 = new BasicCSP( variaveis1, domain , constraints);
+
 
 
         // BacktrackingSearch bs = new BacktrackingSearch();
@@ -197,25 +594,22 @@ public class Principal{
         //BacktrackingSearch backtracking = new BacktrackingSearch();
         //backtracking.apply(csp3);
 
-        BacktrackingSearch bs = new BacktrackingSearch();
-        Assignment asn = bs.apply(csp3);
-        //passa todas as variaveis e dominios
-        System.out.println(asn.getAssignments());
+
 
         //passa o dominio de uma variavel em especifico
         // System.out.println(asn.getAssignments().get("QualidadedeSoftware"));
 
-        Object [] dominios_reduzidos = new Object[44];
+        //Object [] dominios_reduzidos = new Object[15];
 
-        for(Materia materia : variaveis2){
+        /*for(Materia materia : variaveis2){
             materia.setPosicao_grade((int) asn.getAssignments().get(materia.getNome()));
-        }
+        }*/
 
-        for(Materia materia : variaveis2){
+        /*for(Materia materia : variaveis2){
             System.out.println(" Materia: " + materia.getNome() + " Posicao na Grade: " + materia.getPosicao_grade());
-        }
+        }*/
 
-        String [][] matrizPeriodo = new String[10][8];
+        /*String [][] matrizPeriodo = new String[10][8];
         int contLinha = 0;
         int contColuna = 0;
         int contHoras = 0;
@@ -244,7 +638,7 @@ public class Principal{
 
             }
             System.out.println();
-        }
+        }*/
 
 
 
@@ -266,14 +660,31 @@ public class Principal{
         //funcao que passa os dominios para uma lista
 
         */
+        /*Materia []periodos = new Materia[44];
+
+        for(Materia materia : variaveis2) {
+            periodos[materia.getPosicao_grade() - 1] = materia;
+        }
+
+        int posicaoMateria = 0;
+        int periodo = 1;
+
+        while(posicaoMateria < periodos.length){
+            System.out.println("Periodo " + periodo);
+            System.out.println();
+            for(int i = 0; i < 5; i++){
+                if(posicaoMateria < periodos.length){
+                System.out.println(periodos[posicaoMateria]);
+                posicaoMateria++; }
+
+
+            }
+            System.out.println();
+            periodo++;
+        }*/
 
 
     }
-
-}
-
-
-
 
 
 

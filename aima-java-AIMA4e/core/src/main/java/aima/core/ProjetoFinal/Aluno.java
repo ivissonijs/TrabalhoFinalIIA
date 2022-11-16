@@ -11,6 +11,8 @@ public class Aluno {
         //Quantidade de horas que ele deve estudar
         private Double horas;
 
+
+
         //private ArrayList<String> funcionariosPrioritarios;
         //Construtores
 

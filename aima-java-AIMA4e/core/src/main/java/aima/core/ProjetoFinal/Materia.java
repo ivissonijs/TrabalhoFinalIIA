@@ -38,6 +38,8 @@ public class Materia {
 
 
 
+
+
     public void setPreRequisito(Materia[] preRequisito) {
         this.preRequisito = preRequisito;
     }
@@ -71,8 +73,6 @@ public class Materia {
     private int periodoOfertado;
     private int periodoRealizado;
 
-    private int posicao_grade;
-
     public int getPosicao_grade() {
         return posicao_grade;
     }
@@ -80,4 +80,8 @@ public class Materia {
     public void setPosicao_grade(int posicao_grade) {
         this.posicao_grade = posicao_grade;
     }
+
+    private int posicao_grade;
+
+
 }
